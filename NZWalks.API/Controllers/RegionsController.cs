@@ -103,7 +103,7 @@ namespace NZWalks.API.Controllers
                 return NotFound();
             }
 
-            
+   
             var regionDTO = mapper.Map<RegionDto> (regionDomainModel);
 
             return Ok(regionDTO);
