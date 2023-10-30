@@ -9,7 +9,7 @@
         public string? WalkImageUrl { get; set; }
 
         public RegionDto Region { get; set; }
-        public DifficulityDto Difficulty { get; set; }
+        public DifficultyDto Difficulty { get; set; }
 
     }
 }
