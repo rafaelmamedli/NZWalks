@@ -6,7 +6,7 @@ namespace NZWalks.API.Models.DTO
     public class AddWalkRequestDTO
     {
         [Required]
-        [MaxLength(100)]
+        [MinLength(3)]
         public string Name { get; set; }
         [Required]
         [MaxLength(1000)]
