@@ -27,7 +27,8 @@ namespace NZWalks.API.Controllers
         }
 
 
-        [HttpGet]   
+        [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GetAll()  
         {
             // Get Data with Domain Modes
@@ -40,6 +41,7 @@ namespace NZWalks.API.Controllers
 
         [HttpGet]
         [Route("{id}")]
+        [Authorize(Roles = "Reader")]
         public async Task<IActionResult> GetById([FromRoute]Guid id)
         {
 
@@ -60,11 +62,9 @@ namespace NZWalks.API.Controllers
         //POST to Create New Region
         [HttpPost]
         [ValidateModel]
+        [Authorize(Roles = "Writer")]
         public async Task<IActionResult> Create([FromBody] AddRegionRequestDto addRegionRequestDto)
         {
-
-          
-
                 var regionDomainModel = mapper.Map<Region>(addRegionRequestDto);
 
                 // Use Domain Model to create Region
@@ -80,6 +80,7 @@ namespace NZWalks.API.Controllers
         //Update Region
         [HttpPut]
         [Route("{id:Guid}")]
+        [Authorize(Roles = "Writer")]
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody]UpdateRegionRequestDtocs updateRegionRequestDtocs)
         {
             var regionDomainModel = mapper.Map<Region>(updateRegionRequestDtocs);
@@ -99,6 +100,7 @@ namespace NZWalks.API.Controllers
         
         [HttpDelete]
         [Route("{id:Guid}")]
+        [Authorize(Roles = "Writer,Reader")]
         public async  Task<IActionResult> Delete([FromRoute] Guid id) 
         {
 
