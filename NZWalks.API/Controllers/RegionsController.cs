@@ -18,12 +18,17 @@ namespace NZWalks.API.Controllers
 
         public IRegionRepository regionRepository;
         public IMapper mapper;
+        private readonly ILogger<RegionsController> logger;
 
-        public RegionsController(NZWalksDbContext dbContext,IRegionRepository  regionRepository,    IMapper mapper)
+        public RegionsController(NZWalksDbContext dbContext,
+            IRegionRepository  regionRepository, 
+            IMapper mapper,
+            ILogger<RegionsController> logger)
         {
             this.dbContext = dbContext;
             this.regionRepository = regionRepository;
             this.mapper = mapper;
+            this.logger = logger;
         }
 
 
